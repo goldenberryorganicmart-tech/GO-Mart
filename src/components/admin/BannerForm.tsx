@@ -30,9 +30,9 @@ import Image from 'next/image';
 
 const urlSchema = z.string().optional().refine((val) => {
   if (!val) return true;
-  return val.startsWith('/') || val.startsWith('http://') || val.startsWith('https://') || val.startsWith('tel:') || /^\+?[0-9\s-]+$/.test(val);
+  return val.startsWith('http://') || val.startsWith('https://');
 }, {
-  message: "Must be a valid URL, path, tel: link or phone number"
+  message: "Must be a full URL starting with http:// or https://"
 });
 
 const bannerSchema = z.object({
