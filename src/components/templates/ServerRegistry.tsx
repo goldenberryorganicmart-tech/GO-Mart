@@ -68,22 +68,22 @@ export const ShopListingSelector = ({ style, productCardStyle, products, categor
 // --- BLOG LISTING ---
 const BlogListingV1 = dynamic(() => import('./blog-listing/BlogListingV1'));
 
-export const BlogListingSelector = ({ 
-  style, 
+export const BlogListingSelector = ({
+  style,
   variant,
-  blogs, 
-  totalBlogs, 
-  totalPages, 
-  currentPage, 
+  blogs,
+  totalBlogs,
+  totalPages,
+  currentPage,
   q,
   searchTerm
-}: { 
-  style?: string, 
+}: {
+  style?: string,
   variant?: string,
-  blogs: any[], 
-  totalBlogs: number, 
-  totalPages: number, 
-  currentPage: number, 
+  blogs: any[],
+  totalBlogs: number,
+  totalPages: number,
+  currentPage: number,
   q?: string,
   searchTerm?: string
 }) => {

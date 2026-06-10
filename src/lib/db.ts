@@ -1,4 +1,12 @@
 import mongoose from 'mongoose';
+import dns from 'dns';
+
+// Configure process-level DNS servers to bypass ISP blocks on MongoDB Atlas SRV resolution
+try {
+  dns.setServers(['8.8.8.8', '8.8.4.4']);
+} catch (err) {
+  console.warn('Failed to set custom DNS servers:', err);
+}
 
 const MONGODB_URI = process.env.MONGODB_URI;
 
@@ -34,7 +42,7 @@ async function connectToDatabase() {
       return mongoose;
     });
   }
-  
+
   try {
     cached.conn = await cached.promise;
   } catch (e) {

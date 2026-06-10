@@ -11,7 +11,6 @@ import { Loader2, GalleryVerticalEnd, ArrowRight, Eye, EyeOff } from 'lucide-rea
 import { toast } from 'sonner';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
-
 import { Button } from '@/components/ui/button';
 import {
   Form,
@@ -49,7 +48,7 @@ export default function LoginPage() {
   async function loginWithGoogle() {
     setIsGoogleLoading(true);
     try {
-      await signIn('google', { callbackUrl: '/dashboard' });
+      await signIn('google', { callbackUrl: '/' });
     } catch (error) {
       setIsGoogleLoading(false);
       toast.error('Failed to log in with Google.');
@@ -77,7 +76,7 @@ export default function LoginPage() {
         toast.error(response.error);
       } else {
         toast.success('Logged in successfully!');
-        router.push('/dashboard');
+        router.push('/');
         router.refresh();
       }
     } catch (error) {

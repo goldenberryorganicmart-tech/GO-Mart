@@ -116,7 +116,7 @@ export default function RegisterPage() {
   async function loginWithGoogle() {
     setIsGoogleLoading(true);
     try {
-      await signIn('google', { callbackUrl: '/dashboard' });
+      await signIn('google', { callbackUrl: '/' });
     } catch (error) {
       setIsGoogleLoading(false);
       toast.error('Failed to log in with Google.');

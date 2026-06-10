@@ -17,7 +17,14 @@ export const proxy = auth(async (req) => {
     if (role === "admin" || role === "super_admin") {
       return NextResponse.redirect(new URL("/admin/dashboard", nextUrl));
     }
-    return NextResponse.redirect(new URL("/dashboard", nextUrl));
+    return NextResponse.redirect(new URL("/", nextUrl));
+  }
+
+  // Redirect admin/super_admin away from general user dashboard to admin dashboard
+  if (nextUrl.pathname === "/dashboard" && isLoggedIn) {
+    if (role === "admin" || role === "super_admin") {
+      return NextResponse.redirect(new URL("/admin/dashboard", nextUrl));
+    }
   }
 
   // 2. Protection for Admin routes
